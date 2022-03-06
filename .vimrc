@@ -32,8 +32,10 @@ colorscheme gruvbox
 
 
 "========================================Key Mappings========================================
+let mapleader = " " 
 
 inoremap jk <Esc>
+nnoremap <C-b> :NERDTreeToggle<CR>
 "====Coc settings====
 
 ":CocInstall coc-tsserver coc-json coc-html coc-css
