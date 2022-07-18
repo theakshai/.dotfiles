@@ -1,12 +1,12 @@
 "Basic Settings 
 syntax on
+set encoding=utf-8
 set shiftwidth=4
 set smartindent
 set autoindent
 set termguicolors
 set number
 set relativenumber
-set incsearch
 
 
 
@@ -21,7 +21,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'ctrlpvim/ctrlp.vim' 
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
@@ -33,32 +34,27 @@ colorscheme gruvbox
 
 
 "========================================Key Mappings========================================
-let mapleader = " " 
+let mapleader = " "
 
-inoremap jk <Esc>
-nnoremap <C-b> :NERDTreeToggle<CR>
-"====Coc settings====
+inoremap kj  <Esc>
+nnoremap  <C-b> :NERDTreeToggle<CR>
+au Filetype markdown nnoremap <buffer> <F12> :.!toilet -w 200 -f term -F border<CR>
+
+
+"NerdCommenting remaps
+nmap  <C-_> <leader>c<space>
+vmap  <C-_> <leader>c<space>
+
+let g:NERDTreeIgnore = ['^node_modules$']
+ 
+
+"=Coc settings====
 
 ":CocInstall coc-tsserver coc-json coc-html coc-css
 ":CocInstall coc-emmet
 ":CocInstall coc-prettier
 
-"autocmd FileType json syntax match Comment +\/\/.\+$+
-
-
-"Opening CocConfig File 
-
-function! SetupCommandAbbrs(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfunction
-
-" Use C to open coc config
-call SetupCommandAbbrs('C', 'CocConfig')
-
-
-
-
+autocmd FileType json syntax match Comment +\/\/.\+$+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 
