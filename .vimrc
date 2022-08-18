@@ -4,7 +4,6 @@ set encoding=utf-8
 set shiftwidth=4
 set smartindent
 set autoindent
-set termguicolors
 set number
 set relativenumber
 
@@ -22,7 +21,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
@@ -57,4 +55,5 @@ let g:NERDTreeIgnore = ['^node_modules$']
 autocmd FileType json syntax match Comment +\/\/.\+$+
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
-
+nnoremap <leader>java :cd %:p:h <CR> :! javac %:t<CR> :! java %:t:r<CR>
+nnoremap <leader>rust :cd %:p:h <CR> :! rustc %:t<CR> :! ./ %:t:r<CR>
