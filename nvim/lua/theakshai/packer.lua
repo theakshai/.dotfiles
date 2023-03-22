@@ -1,4 +1,15 @@
-vim.cmd[[packadd packer.nvim]]
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
 
@@ -10,17 +21,17 @@ return require('packer').startup(function(use)
 	}
 
 
-	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+	use('nvim-treesitter/nvim-treesitter', {run = ':tsupdate'})
 	use { "ellisonleao/gruvbox.nvim" }
 	use {
-	  'VonHeikemen/lsp-zero.nvim',
+	  'vonheikemen/lsp-zero.nvim',
 	  requires = {
-		  -- LSP Support
+		  -- lsp support
 		  {'neovim/nvim-lspconfig'},
 		  {'williamboman/mason.nvim'},
 		  {'williamboman/mason-lspconfig.nvim'},
 
-		  -- Autocompletion
+		  -- autocompletion
 		  {'hrsh7th/nvim-cmp'},
 		  {'hrsh7th/cmp-buffer'},
 		  {'hrsh7th/cmp-path'},
@@ -28,8 +39,8 @@ return require('packer').startup(function(use)
 		  {'hrsh7th/cmp-nvim-lsp'},
 		  {'hrsh7th/cmp-nvim-lua'},
 
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
+		  -- snippets
+		  {'l3mon4d3/luasnip'},
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
@@ -38,15 +49,20 @@ return require('packer').startup(function(use)
 	  config = function() require("nvim-autopairs").setup {} end
 
   }
-  -- Lua
-use {
-  "folke/zen-mode.nvim",
-  config = function()
-    require("zen-mode").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+  -- lua
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use("theprimeagen/harpoon")
+  if packer_bootstrap then
+    require('packer').sync()
   end
-}
+
 end)
