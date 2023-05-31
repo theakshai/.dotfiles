@@ -60,6 +60,15 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  use{"nvim-tree/nvim-tree.lua"}
+  use{"nvim-tree/nvim-web-devicons"}
+
+  --for git
+  use{"tpope/vim-fugitive"}
+
+
+  -- magic file handling
   use("theprimeagen/harpoon")
   if packer_bootstrap then
     require('packer').sync()
