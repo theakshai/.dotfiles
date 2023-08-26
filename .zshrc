@@ -100,3 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
+alias "cdp"="cd ~/personal"
+alias "cdh"="cd ~/personal/hobby"
+
+bindkey -v
+bindkey kj vi-cmd-mode 
+

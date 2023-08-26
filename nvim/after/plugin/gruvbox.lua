@@ -2,10 +2,14 @@ vim.o.background = "dark"
 -- setup must be called before loading the colorscheme
 -- Default options:
 require("gruvbox").setup({
+     italic = {
+     strings = true,
+     operators = true,
+     comments = true,
+  },
   undercurl = true,
   underline = true,
   bold = true,
-  italic = true,
   strikethrough = true,
   invert_selection = false,
   invert_signs = false,
