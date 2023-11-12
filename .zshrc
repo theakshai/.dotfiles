@@ -71,6 +71,8 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,9 +101,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
+alias vi="nvim"
 alias "cdp"="cd ~/personal"
 alias "cdh"="cd ~/personal/hobby"
+
+#alias for kubectl
+alias kc="kubectl"
 
 bindkey -v
 bindkey kj vi-cmd-mode 
