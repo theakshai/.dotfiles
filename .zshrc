@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -71,8 +71,6 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,12 +100,25 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="nvim"
-alias "cdp"="cd ~/personal"
-alias "cdh"="cd ~/personal/hobby"
+alias cdt="cd ~/training"
 
-#alias for kubectl
+# alias for kubectl commands 
 alias kc="kubectl"
 
-bindkey -v
-bindkey kj vi-cmd-mode 
+# alias for Hashicorp Products
+alias v="vault"
+alias ti="terraform init"
+alias tf="terraform fmt"
+alias tp="terraform plan"
+alias ta="terraform apply"
 
+
+# piping the fzf with vi
+
+
+
+# bindkey
+bindkey -v
+bindkey kj vi-cmd-mode
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)

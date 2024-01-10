@@ -16,13 +16,17 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use{
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		'nvim-telescope/telescope.nvim', tag = '0.1.4',
 		requires = {('nvim-lua/plenary.nvim')}
 	}
 
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':tsupdate'})
-	use { "ellisonleao/gruvbox.nvim" }
+
+  --use { "ellisonleao/gruvbox.nvim" }
+
+  use { "catppuccin/nvim", as = "catppuccin" }
+
 	use {
 	  'vonheikemen/lsp-zero.nvim',
 	  requires = {
@@ -44,22 +48,24 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+
+
   use {
-	  "windwp/nvim-autopairs",
-	  config = function() require("nvim-autopairs").setup {} end
+	 "windwp/nvim-autopairs",
+	config = function() require("nvim-autopairs").setup {} end
 
   }
+
+
   -- lua
   use {
     "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
       }
     end
   }
+
 
 
   --for git
@@ -67,6 +73,7 @@ return require('packer').startup(function(use)
 
 
   -- magic file handling
+  
   use("theprimeagen/harpoon")
   if packer_bootstrap then
     require('packer').sync()
