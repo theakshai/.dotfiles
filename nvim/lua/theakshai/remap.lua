@@ -22,3 +22,4 @@ vim.keymap.set('n', '<S-l>', ':bnext<CR>')
 
 -- spliting panes
 vim.keymap.set('n', "<leader>h", ':vsplit<CR>')
+

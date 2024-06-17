@@ -17,3 +17,4 @@ vim.opt.incsearch = true
 vim.g.netrw_banner = 0
 
 -- moving across buffers
+
