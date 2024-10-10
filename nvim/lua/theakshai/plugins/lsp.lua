@@ -34,14 +34,13 @@ return {
         configure_diagnostics = true,
       })
 
-      lsp.setup_servers({'tsserver', 'eslint'})
-      lsp.nvim_workspace()
+      lsp.setup_servers({'tsserver', 'eslint', 'terraformls'})  -- Added terraformls
       lsp.setup()
 
       -- Diagnostics configuration
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
-          virtual_text = true -- To see the errors in the file itself
+          virtual_text = true
         }
       )
 
@@ -89,8 +88,18 @@ return {
           { name = 'buffer' },
         })
       })
+
+      -- Setup terraformls
+      require('lspconfig').terraformls.setup{}
+
+      -- Autocommand for formatting
+      vim.api.nvim_create_autocmd({"BufWritePre"}, {
+        pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+      })
     end
   }
 }
-
 
