@@ -1,10 +1,3 @@
---return { 
---  {
---    'nvim-treesitter/nvim-treesitter', 
---    build = ':TSUpdate',
---  }
---}
-
 return { 
   {
     'nvim-treesitter/nvim-treesitter', 
@@ -12,14 +5,16 @@ return {
     config = function()
       require'nvim-treesitter.configs'.setup {
         ensure_installed = {
-          "terraform",  -- Add Terraform to the list of installed parsers
+          "terraform",  
+          "go",  
           "lua", 
+          "java",
+          "yaml"
         },
         highlight = {
-          enable = true,  -- Enable syntax highlighting
-          additional_vim_regex_highlighting = false,  -- Disable additional Vim regex highlighting
+          enable = true,  
+          additional_vim_regex_highlighting = false,  
         },
-        -- You can add other configurations here as needed
       }
     end,
   }
