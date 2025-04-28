@@ -11,10 +11,10 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.background = dark
 
 
 -- netrw configuration
 vim.g.netrw_banner = 0
 
+-- moving across buffers
 
