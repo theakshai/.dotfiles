@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+
+"""
+Uni directional file sync.
+
+Always please commit only in ~/.zshrc :)
+"""
+
+import os
+import sys
+import shutil
+import datetime
+
+
+
+
+def last_modified(src_file: str) -> float:
+    mt = os.path.getmtime(src_file)
+    return mt
+
+
+def write_log(log_file: str, content: str):
+    print(f"Writing log {content}")
+    with open(log_file, 'w') as file:
+        file.write(str(content))
+
+def lm_log(log_file: str, last_modified: datetime, src_file, dest_file):
+    if os.path.isfile(log_file):
+        with open(log_file, 'r') as file:
+            content = file.read()
+            if content:
+                prev_modified_time = datetime.datetime.fromtimestamp(float(content))
+                if prev_modified_time == last_modified:
+                    return
+            sync(src_file,dest_file)
+            write_log('/Users/akshai/.dotfiles/automation/lm_log', last_modified)
+            return
+    else:
+        write_log('/Users/akshai/.dotfiles/automation/lm_log','')
+
+
+def sync(src_file, dest_file):
+    with open(src_file, 'r') as src, open(dest_file, 'w') as dst:
+        contents = src.read()
+        dst.write(contents)
+
+
+
+def main():
+    args = sys.argv
+    print(f"The args are {args}")
+    if len(args) > 1:
+        src = args[1] 
+        dest = args[2] 
+
+    last_modified_time = last_modified(src)
+    lm_log("/Users/akshai/.dotfiles/automation/lm_log", last_modified_time, src,dest)
+
+main()
