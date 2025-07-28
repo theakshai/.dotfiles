@@ -1,4 +1,5 @@
 return {
+  {
   "windwp/nvim-autopairs",
   
   config = function()
@@ -28,6 +29,7 @@ return {
       },
     }
   end
+}
 }
 
 

@@ -34,7 +34,7 @@ return {
         configure_diagnostics = true,
       })
 
-      lsp.setup_servers({'tsserver', 'eslint', 'terraformls'})  -- Added terraformls
+      lsp.setup_servers({'ts_ls', 'eslint', 'terraformls'})  -- Added terraformls
       lsp.setup()
 
       -- Diagnostics configuration
