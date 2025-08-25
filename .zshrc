@@ -2,7 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+export bun="$HOME/.bun/bin"
 export ZSH="$HOME/.oh-my-zsh"
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -70,7 +72,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+
+plugins=(web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,26 +102,85 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vi="nvim"
 alias cdt="cd ~/training"
+alias cdt="cd ~/training"
+alias vi="nvim"
+alias t="tmux"
+alias lsd="ls -d */"
+alias lsf="ls -p | grep -v /"
 
 # alias for kubectl commands 
 alias kc="kubectl"
 
 # alias for Hashicorp Products
-alias v="vault"
 alias ti="terraform init"
 alias tf="terraform fmt"
 alias tp="terraform plan"
 alias ta="terraform apply"
+alias td="terraform destroy"
+
+ 
+# alias for git commands
+alias ga="git add ."
+alias gc="git commit"
+alias gp="git push origin"
+alias gs="git status"
+alias gi="git init"
+
+# Just fron crontab
+export VISUAL=nano
+
+alias spin='docker run -it --rm --mount type=bind,source=/Users/akshai/personal/vol-docker,target=/sbx --mount type=bind,source=/Users/akshai/.vimrc,target=/root/.vimrc,ro "$@"'
 
 
-# piping the fzf with vi
 
-
+export AWS_DEFAULT_REGION=us-east-1
 
 # bindkey
 bindkey -v
 bindkey kj vi-cmd-mode
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export PATH="$PATH:$HOME/.dotfiles/automation"
+
+
+c() {
+    if [ -z "$1" ]; then
+        echo "Usage: c <filename.c>"
+        return 1
+    fi
+
+    local file="$1"
+    local out="out"
+
+    cc -o "$out" "$file" && ./"$out"
+}
+
+
+# Added by Windsurf
+export PATH="/Users/akshai/.codeium/windsurf/bin:$PATH"
+
+# bun completions
+[ -s "/Users/akshai/.bun/_bun" ] && source "/Users/akshai/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+export NVIM_APPNAME=stable
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/akshai/.lmstudio/bin"
+# End of LM Studio CLI section
+

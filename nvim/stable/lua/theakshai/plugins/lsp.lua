@@ -91,6 +91,7 @@ return {
 
       -- Setup terraformls
       require('lspconfig').terraformls.setup{}
+      require('lspconfig').gopls.setup{}
 
       -- Autocommand for formatting
       vim.api.nvim_create_autocmd({"BufWritePre"}, {

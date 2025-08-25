@@ -27,3 +27,4 @@ vim.keymap.set('n', "<leader>p", ':NvimTreeToggle<CR>', { noremap = true, silent
 -- copying to the clipboard
 vim.keymap.set('n', "y", '"+y', {noremap = true, silent=true})
 vim.keymap.set('v', "y", '"+y', {noremap = true, silent=true})
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
