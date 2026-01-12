@@ -1,0 +1,33 @@
+[
+    {
+        "key": "cmd+w",
+        "command": "workbench.action.focusNextGroup",
+        "when": "editorTextFocus",
+        "args": { "direction": "right" },
+        "comment": "Mimics <leader>w (change window) by focusing the next editor group."
+    },
+    {
+        "key": "cmd+h",
+        "command": "workbench.action.splitEditor",
+        "when": "editorTextFocus",
+        "args": { "orientation": "vertical" },
+        "comment": "Mimics <leader>h (vertical split) by splitting the editor vertically."
+    },
+    {
+        "key": "cmd+p",
+        "command": "workbench.view.explorer",
+        "comment": "Mimics <leader>p (NvimTreeToggle) by toggling the file explorer."
+    },
+    {
+        "key": "cmd+l f",
+        "command": "editor.action.formatDocument",
+        "when": "editorTextFocus",
+        "comment": "Mimics <leader>lf (LSP format) by formatting the document."
+    },
+    {
+        "key": "cmd+a",
+        "command": "editor.action.selectAll",
+        "when": "editorTextFocus",
+        "comment": "Mimics <C-a> (select all) by selecting all text in the editor."
+    }
+]
